@@ -19,9 +19,9 @@ import webbrowser
 
 #=====================================
 song_hot_floor = 90000
-singerNum = 830
+singerNum = 170
 myArtistList = []
-with open('日本女艺人', 'r') as f:
+with open('韩国乐队', 'r') as f:
     myArtistList = f.read().splitlines()
 #=====================================
 
@@ -72,9 +72,9 @@ def getTopSongs(xm_obj):
     artistNameList = []
 
     for i in xrange(0,len(myArtistList)):
+        print "Get to the " + str(i) + "th "+"singer"
         artistID = myArtistList[i]
 
-        print "Current singer count " + str(i)
         if i > singerNum:
             break
 
@@ -136,6 +136,7 @@ def getHtmlFile(artistID, xm_obj, pageNum):
             htmlFile = savedHtml.read() 
             return htmlFile
     else:
+        # print "downloading "+artistID+"'s "+str(pageNum)+" page"
         if pageNum == 1:
             url = "http://www.xiami.com/artist/top-" + artistID
             htmlFile = xm_obj.read_link(url).content

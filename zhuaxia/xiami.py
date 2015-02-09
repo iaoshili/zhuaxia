@@ -6,7 +6,7 @@ import log, config, util, proxypool
 import urllib
 from os import path
 import sys
-import downloader
+# import downloader
 from obj import Song, Handler
 from bs4 import BeautifulSoup
 
@@ -55,6 +55,8 @@ class XiamiSong(Song):
 
             #get the song json data
             try:
+                print "read_link"
+                print (url_song % self.song_id)
                 jsong = self.handler.read_link(url_song % self.song_id).json()['data']['trackList'][0]
             except Exception, err:
                 LOG.error(u'[虾]Song cannot be parsed/downloaded: [%s]'%url)
@@ -83,7 +85,6 @@ class XiamiSong(Song):
 
     def init_by_json(self, song_json ):
         """ the group dir and abs_path should be set by the caller"""
-
         self.song_id = song_json['song_id']
         self.album_id = song_json['album_id']
         self.song_name = util.decode_html(song_json['title'])

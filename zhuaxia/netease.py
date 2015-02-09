@@ -5,7 +5,7 @@ import requests
 import log, config, util
 import md5
 from os import path
-import downloader
+# import downloader
 from obj import Song, Handler
 
 LOG = log.get_logger("zxLogger")
